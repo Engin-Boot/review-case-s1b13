@@ -4,7 +4,7 @@
 #include<map>
 #include<vector>
 using namespace std;
-map<std::string,int> countWords(map<std::string,int>,string );
+map<std::string,int> countWords(map<std::string&,int>,string );
 void printwordandwordcounts(map<std::string,int>);
 map<string,int> InsertWords(map<string,int>,std::vector<string>);
 //map<string, int> InsertlastWord(map<string, int>,string);
@@ -35,7 +35,7 @@ void printwordandwordcounts(map<std::string,int> M)
              << endl; 
     } 
 }
-map<std::string,int> countWords(map<std::string,int> M,string line)
+map<std::string,int> countWords(map<std::string,int> &M,string line)
 {
 // String for storing the words 
     string word = ""; std::vector<string> words;
