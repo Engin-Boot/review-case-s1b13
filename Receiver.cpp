@@ -17,10 +17,10 @@ break;
     // String for storing the words 
     string word = ""; 
   
-    for (int i = 0; i < line.size(); i++) { 
+    for (int i = 0; i < std::line.size(); i++) { 
   
      
-        if (str[i] == ' ') { 
+        if (line[i] == ' ') { 
   
             // If the current word 
             // is not found then insert 
