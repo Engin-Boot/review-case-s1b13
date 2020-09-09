@@ -3,6 +3,8 @@
 #include<iostream>
 #include<map>
 using namespace std;
+map<std::string,int> countWords(map<std::string,int> )
+
 int main()
 {
  map<string, int> M; 
@@ -13,9 +15,20 @@ if(line=="")
 {
 break;
 }
- 
-  
-    // String for storing the words 
+ map<string, int> tempMap=countWords(M);
+  M=tempMap;
+    
+}
+ for (auto& it : M) { 
+        cout << it.first << " - "
+             << it.second 
+             << endl; 
+    } 
+return 0;
+}
+map<std::string,int> countWords(map<std::string,int> M)
+{
+// String for storing the words 
     string word = ""; 
   
     for (int i = 0;line[i]!='\0'; i++) { 
@@ -49,12 +62,6 @@ break;
     // Update the frequency 
     else
         M[word]++; 
+ return M;
+}
 
-}
- for (auto& it : M) { 
-        cout << it.first << " - "
-             << it.second 
-             << endl; 
-    } 
-return 0;
-}
