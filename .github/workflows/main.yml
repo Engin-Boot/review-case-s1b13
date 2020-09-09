@@ -21,11 +21,11 @@ jobs:
       run: g++ -Wall -Wextra -Werror --coverage -o Sender sender/sender.cpp
       
     - name: build Receiver
-      run: g++ -Wall -Wextra -Werror --coverage -o Receiver receiver/receiver.cpp
+      run: g++ -Wall -Wextra -Werror --coverage -o Receive receiver/receiver.cpp
       
     - name: static analysis
-      run: cppcheck --enable=all --error-exitcode=1 
-  
+      run: cppcheck --enable=all --error-exitcode=1 .
+      
     - name: run
       run: ./Sender | ./Receiver
     
@@ -34,4 +34,3 @@ jobs:
       
     - name: coverage report Receiver
       run: gcov -r receiver/receiver.cpp
-    
