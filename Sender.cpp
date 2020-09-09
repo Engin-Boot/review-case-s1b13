@@ -1,6 +1,6 @@
 #include <iostream> 
 int main()
 {
-  cout<<"executed";
+  std::cout<<"executed";
   return 0;
 }
