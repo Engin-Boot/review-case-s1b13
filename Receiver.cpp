@@ -4,7 +4,7 @@
 using namespace std;
 int main
 {
-std::unordered_map<string, int> wordFreq;
+unordered_map<string, int> wordFreq;
 string line="";
 while(getline(cin,line))
 {
@@ -18,9 +18,9 @@ storeFrequencies(line,wordFreq);
  unordered_map<string, int>:: iterator p; 
  for (p = wordFreq.begin(); p != wordFreq.end(); p++) 
         cout << "(" << p->first << ", " << p->second << ")\n"; 
-
+return 0;
 }
-void storeFrequencies(const string &str,std::unordered_map<string, int> wordFreq) 
+void storeFrequencies(const string &str,unordered_map<string, int> wordFreq) 
 { 
   
   
