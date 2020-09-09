@@ -28,7 +28,7 @@ int main()
     {
         //string inputBuffer;                         // buffer to store input, which will hold an entire excel row w/ cells delimited by commas
                                                     // must be a c string since strtok() only takes c string as input
-        string tokensArray[numCols];
+       //string tokensArray[numCols];
         string date = "";
         string comment = "";
         
