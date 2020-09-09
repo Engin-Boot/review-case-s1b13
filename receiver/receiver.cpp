@@ -19,12 +19,16 @@ break;
   M=tempMap;
     
 }
+ 
+return 0;
+}
+void printwordandwordcounts(map<std::string,int> M)
+{
  for (auto& it : M) { 
         cout << it.first << " - "
              << it.second 
              << endl; 
     } 
-return 0;
 }
 map<std::string,int> countWords(map<std::string,int> M,string line)
 {
