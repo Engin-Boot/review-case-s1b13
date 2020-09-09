@@ -19,7 +19,7 @@ if(line=="")
 {
 break;
 }
- map<string, int> tempMap=countWords(M,line);
+ map<string, int> tempMap=countWords(*M,line);
   M=tempMap;
     
 }
