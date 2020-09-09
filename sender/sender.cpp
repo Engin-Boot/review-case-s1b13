@@ -15,7 +15,7 @@ struct enrollee
 int main()
 {
     const int ENROLL_SIZE = 1000;               // used const instead of #define since the performance diff is negligible,
-    const int numCols = 2;                    // while const allows for greater utility/debugging bc it is known to the compiler ,
+    //const int numCols = 2;                    // while const allows for greater utility/debugging bc it is known to the compiler ,
                                                 // while #define is a preprocessor directive
     ifstream inputFile;                         // create input file stream for reading only
     struct enrollee enrollArray[ENROLL_SIZE];   // array of structs to store each enrollee and their respective data
