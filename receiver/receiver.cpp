@@ -3,7 +3,7 @@
 #include<iostream>
 #include<map>
 using namespace std;
-map<std::string,int> countWords(map<std::string,int> )
+map<std::string,int> countWords(map<std::string,int>,string )
 
 int main()
 {
@@ -15,7 +15,7 @@ if(line=="")
 {
 break;
 }
- map<string, int> tempMap=countWords(M);
+ map<string, int> tempMap=countWords(M,line);
   M=tempMap;
     
 }
@@ -26,7 +26,7 @@ break;
     } 
 return 0;
 }
-map<std::string,int> countWords(map<std::string,int> M)
+map<std::string,int> countWords(map<std::string,int> M,string line)
 {
 // String for storing the words 
     string word = ""; 
