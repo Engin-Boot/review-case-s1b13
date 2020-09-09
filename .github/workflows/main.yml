@@ -34,3 +34,6 @@ jobs:
       
     - name: coverage report Receiver
       run: gcov -r receiver/receiver.cpp
+    
+    - name: cyclomatic number
+      run: lizard
