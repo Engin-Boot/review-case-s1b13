@@ -18,10 +18,10 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y cppcheck
       
     - name: build Sender
-      run: g++ -Wall -Wextra -Werror --coverage -o Sender Sender/Sender.cpp
+      run: g++ -Wall -Wextra -Werror --coverage -o Sender sender/sender.cpp
       
     - name: build Receiver
-      run: g++ -Wall -Wextra -Werror --coverage -o Receiver Receiver/Receiver.cpp
+      run: g++ -Wall -Wextra -Werror --coverage -o Receiver receiver/receiver.cpp
       
     - name: static analysis
       run: cppcheck --enable=all --error-exitcode=1 .
@@ -30,7 +30,7 @@ jobs:
       run: ./Sender | ./Receiver
     
     - name: coverage report Sender
-      run: gcov -r sender/Sender.cpp
+      run: gcov -r sender/sender.cpp
       
     - name: coverage report Receiver
-      run: gcov -r receiver/Receiver.cpp
+      run: gcov -r receiver/receiver.cpp
