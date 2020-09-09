@@ -72,11 +72,11 @@ map<std::string,int> countWords(map<std::string,int> M,string line)
 map<string,int> InsertWords(map<string,int> M,std::vector<string> words) 
 { 
     // Key is not present 
- for(int i=0;i<words.size();i++){
-    if (M.find(words[i]) == M.end()) 
-     M.insert(make_pair(words[i], 1)); 
+ for (auto& word : words) { {
+    if (M.find(word) == M.end()) 
+     M.insert(make_pair(word, 1)); 
   else
-   M[words[i]]++;
+   M[word]++;
  }  
   
     return M; 
