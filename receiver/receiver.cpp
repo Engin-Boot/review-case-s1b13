@@ -6,6 +6,7 @@ using namespace std;
 map<std::string,int> countWords(map<std::string,int>,string );
 void printwordandwordcounts(map<std::string,int>);
 map<string, int> InsertlastWord(map<string, int>,string);
+bool ifwordfound(map<string, int>,string) ;
 int main()
 {
  map<string, int> M; 
@@ -44,7 +45,7 @@ map<std::string,int> countWords(map<std::string,int> M,string line)
             // If the current word 
             // is not found then insert 
             // current word with frequency 1 
-            if (M.find(word) == M.end()) { 
+            if (ifwordfound(M,word) { 
                 M.insert(make_pair(word, 1)); 
                 word = ""; 
             } 
@@ -59,12 +60,16 @@ map<std::string,int> countWords(map<std::string,int> M,string line)
         else
             word += line[i]; 
     } 
- 
- 
-  
-    // Storing the last word of the string 
    
  return InsertlastWord(M,word);
+}
+bool ifwordfound(map<string,int> M,string word) 
+{ 
+    // Key is not present 
+    if (M.find(word) == M.end()) 
+        return true; 
+  
+    return false; 
 }
 map<string, int> InsertlastWord(map<string, int> M,string word)
 {
@@ -74,5 +79,5 @@ map<string, int> InsertlastWord(map<string, int> M,string word)
     // Update the frequency 
     else
         M[word]++; 
- return M
+ return M;
 }
