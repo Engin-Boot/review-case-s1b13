@@ -23,8 +23,7 @@ jobs:
     - name: build Receiver
       run: g++ -Wall -Wextra -Werror --coverage -o Receiver receiver/receiver.cpp
       
-    - name: static analysis
-      run: cppcheck --enable=all --error-exitcode=1 .
+    
       
     - name: run
       run: ./Sender | ./Receiver
