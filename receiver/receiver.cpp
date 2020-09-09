@@ -6,9 +6,9 @@
 using namespace std;
 map<std::string,int> countWords(map<std::string,int>,string );
 void printwordandwordcounts(map<std::string,int>);
-map<string,int> InsertWords(map<string,int>,std::vector<string>);
+//map<string,int> InsertWords(map<string,int>,std::vector<string>);
 map<string, int> InsertlastWord(map<string, int>,string);
-bool ifwordfound(map<string, int>,string) ;
+//bool ifwordfound(map<string, int>,string) ;
 int main()
 {
  map<string, int> M; 
@@ -24,6 +24,7 @@ break;
     
 }
  
+ printwordandwordcounts(M);
 return 0;
 }
 void printwordandwordcounts(map<std::string,int> M)
