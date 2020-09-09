@@ -2,6 +2,7 @@
 #include<fstream>
 #include<iostream>
 #include<map>
+#include<vector>
 using namespace std;
 map<std::string,int> countWords(map<std::string,int>,string );
 void printwordandwordcounts(map<std::string,int>);
