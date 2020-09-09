@@ -3,7 +3,7 @@
 #include<iostream>
 #include<map>
 using namespace std;
-map<std::string,int> countWords(map<std::string,int>,string )
+map<std::string,int> countWords(map<std::string,int>,string );
 
 int main()
 {
