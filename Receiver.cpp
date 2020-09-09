@@ -2,9 +2,9 @@
 #include<iostream>
 #include<map>
 using namespace std;
-int main
+int main()
 {
-unordered_map<string, int> wordFreq;
+unordered_map<string,int> wordFreq;
 string line="";
 while(getline(cin,line))
 {
@@ -12,15 +12,19 @@ if(line=="")
 {
 break;
 }
-storeFrequencies(line,wordFreq);
+  stringstream ss(line); 
+    string word;
+    while (ss >> word) 
+        wordFreq[word]++;
+
 
 }
- unordered_map<string, int>:: iterator p; 
+ unordered_map<string,int>:: iterator p; 
  for (p = wordFreq.begin(); p != wordFreq.end(); p++) 
         cout << "(" << p->first << ", " << p->second << ")\n"; 
 return 0;
 }
-void storeFrequencies(const string &str,unordered_map<string, int> wordFreq) 
+/*void storeFrequencies(const string &str,unordered_map<string,int> wordFreq) 
 { 
   
   
@@ -30,4 +34,4 @@ void storeFrequencies(const string &str,unordered_map<string, int> wordFreq)
     while (ss >> word) 
         wordFreq[word]++; 
    
-} 
+} */
