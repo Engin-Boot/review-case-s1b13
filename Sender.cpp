@@ -19,7 +19,7 @@ int main()
                                                 // while #define is a preprocessor directive
     ifstream inputFile;                         // create input file stream for reading only
     struct enrollee enrollArray[ENROLL_SIZE];   // array of structs to store each enrollee and their respective data
-    int arrayPos = 0;
+   
 
     // open the input file to read
     inputFile.open("sample-review/review-report.csv");
