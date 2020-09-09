@@ -64,7 +64,7 @@ map<std::string,int> countWords(map<std::string,int> M,string line)
         else
             word += line[i]; 
     } 
- words.pushback(word);
+ words.push_back(word);
    
  return InsertWords(M,words);
 }
@@ -77,7 +77,7 @@ map<string,int> InsertWords(map<string,int> M,std::vector<string> words)
      M.insert(make_pair(words[i], 1)); 
   else
    M[words[i]]++;
-        
+ }  
   
     return M; 
 }
