@@ -17,7 +17,7 @@ break;
     // String for storing the words 
     string word = ""; 
   
-    for (int i = 0; i < std::line.size(); i++) { 
+    for (int i = 0;line[i]!='\0'; i++) { 
   
      
         if (line[i] == ' ') { 
@@ -38,7 +38,7 @@ break;
         } 
   
         else
-            word += str[i]; 
+            word += line[i]; 
     } 
   
     // Storing the last word of the string 
