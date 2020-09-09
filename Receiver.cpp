@@ -4,7 +4,7 @@
 using namespace std;
 int main()
 {
-unordered_map<string,int> wordFreq;
+ map<string, int> M; 
 string line="";
 while(getline(cin,line))
 {
@@ -12,16 +12,49 @@ if(line=="")
 {
 break;
 }
-  stringstream ss(line); 
-    string word;
-    while (ss >> word) 
-        wordFreq[word]++;
-
+ 
+  
+    // String for storing the words 
+    string word = ""; 
+  
+    for (int i = 0; i < line.size(); i++) { 
+  
+     
+        if (str[i] == ' ') { 
+  
+            // If the current word 
+            // is not found then insert 
+            // current word with frequency 1 
+            if (M.find(word) == M.end()) { 
+                M.insert(make_pair(word, 1)); 
+                word = ""; 
+            } 
+  
+            // update the frequency 
+            else { 
+                M[word]++; 
+                word = ""; 
+            } 
+        } 
+  
+        else
+            word += str[i]; 
+    } 
+  
+    // Storing the last word of the string 
+    if (M.find(word) == M.end()) 
+        M.insert(make_pair(word, 1)); 
+  
+    // Update the frequency 
+    else
+        M[word]++; 
 
 }
- unordered_map<string,int>:: iterator p; 
- for (p = wordFreq.begin(); p != wordFreq.end(); p++) 
-        cout << "(" << p->first << ", " << p->second << ")\n"; 
+ for (auto& it : M) { 
+        cout << it.first << " - "
+             << it.second 
+             << endl; 
+    } 
 return 0;
 }
 /*void storeFrequencies(const string &str,unordered_map<string,int> wordFreq) 
