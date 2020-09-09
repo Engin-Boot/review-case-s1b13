@@ -51,6 +51,10 @@ jobs:
     - name: run
 
       run: ./testchecker
+      
+    - name: run
+
+      run: ./SenderExe | ./ReceiverExe
 
     
 
