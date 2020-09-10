@@ -5,15 +5,22 @@
 #include<stdlib.h>                      
 
 using namespace std;
-
 struct RowData
 {
     string date = "";
     string comment = "";
     
 };
+void DummyFunction(int ,char**);
+void PrintSpecificFunction(int,RowData* RowArray);
+
 
 int main(int argc,char *argv[])
+{
+    DummyFunction(argc,argv);
+    
+}
+void DummyFunction(int argc,char *argv[])
 {
     const int ARRAY_SIZE = 1000;               // used const instead of #define since the performance diff is negligible,
     
@@ -40,8 +47,19 @@ int main(int argc,char *argv[])
         RowArray[0].date = date;
         RowArray[0].comment = comment;
         
-    if(argc==2){
-        switch(ColumnNumber)
+    if(argc==2)
+    {
+        PrintSpecificFunction(ColumnNumber,&RowArray[0]); 
+    }else
+    { 
+        cout << RowArray[0].comment<<" ";
+    }
+    }
+    
+}
+void PrintSpecificFunction(int ColumnNumber,RowData RowArray[])
+{
+    switch(ColumnNumber)
         {
             case 1:
                     cout << RowArray[0].date<<" ";
@@ -54,11 +72,4 @@ int main(int argc,char *argv[])
                     cout<<RowArray[0].comment<<" ";
                     break;
         }
-    }else
-    {
-        cout << RowArray[0].comment<<" ";
-    }
-    }
-    
-    
 }
