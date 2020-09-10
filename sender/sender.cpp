@@ -2,6 +2,7 @@
 #include <string>                               // for strings
 #include <cstring>                              // for strtok()
 #include <fstream>                              // for file streams
+#include<stdlib.h>                      
 
 using namespace std;
 
@@ -12,7 +13,7 @@ struct RowData
     
 };
 
-int main()
+int main(int argc,char *argv[])
 {
     const int ARRAY_SIZE = 1000;               // used const instead of #define since the performance diff is negligible,
     
@@ -23,6 +24,8 @@ int main()
     // open the input file to read
     inputFile.open("sample-review/review-report.csv");
     // read the file until we reach the end
+    int ColumnNumber = atoi(argv[1]);
+    
     while(!inputFile.eof())
     {
         
@@ -37,9 +40,25 @@ int main()
         RowArray[0].date = date;
         RowArray[0].comment = comment;
         
-
-        
+    if(argc==2){
+        switch(ColumnNumber)
+        {
+            case 1:
+                    cout << RowArray[0].date<<" ";
+                    break;
+            case 2:
+                    cout<<RowArray[0].comment<<" ";
+                    break;
+            default:
+                    cout<<RowArray[0].date<<" ";
+                    cout<<RowArray[0].comment<<" ";
+                    break;
+        }
+    }else
+    {
         cout << RowArray[0].comment<<" ";
-        
     }
+    }
+    
+    
 }
