@@ -70,12 +70,12 @@ void CommaCounter(string line,int SelectedColumn)
         PrintSelectedColumn(CommaCount,SelectedColumn,line,i);
         
     }
-    cout<<" ";
+   // cout<<" ";
 }
 void PrintSelectedColumn(int CommaCount,int SelectedColumn,string line,int i)
 {
     
     if(CommaCount==SelectedColumn)
-        cout<<line[i];
+       // cout<<line[i];
     
 }
