@@ -29,8 +29,8 @@ void printwordandwordcounts(map<std::string, int> M)
     if (M.size() > 0) {
         fstream fout;
         fout.open("sample-review/WordCount.csv", ios::out | ios::app);
-        for (auto& it : M) {
-            fout << itr->second << "," << itr->first << "\n";
+        for (auto& iterator : M) {
+            fout << iterator->second << "," << iterator->first << "\n";
         }
     }
     else
