@@ -1,75 +1,74 @@
 #include <iostream>
-#include <string>                               // for strings
-#include <cstring>                              // for strtok()
-#include <fstream>                              // for file streams
-#include<stdlib.h>                      
+#include <vector>
+#include <fstream>
+#include <sstream>
+#include <algorithm> 
+#include <functional> 
+#include <cctype>
+#include <locale>
+
 
 using namespace std;
-struct RowData
-{
-    string date = "";
-    string comment = "";
-    
-};
-void DummyFunction(int ,char**);
-void PrintSpecificFunction(int,RowData* RowArray);
-
+void IfNoArgumentsPassed(fstream&);
+void IfArgumentsPassed(fstream&  ,char**);
+void PrintSelectedColumn(string ,int);
 
 int main(int argc,char *argv[])
 {
-    DummyFunction(argc,argv);
+    fstream fin; 
+    fin.open("sample-review/review-report.csv", ios::in);
+    if(argc==1)
+    {
+        IfNoArgumentsPassed(fin);
+    }
+    else
+    {
+       IfArgumentsPassed(fin,argv);
+    }    
     
 }
-void DummyFunction(int argc,char *argv[])
+void IfNoArgumentsPassed(fstream& fin)
 {
-    const int ARRAY_SIZE = 1000;               // used const instead of #define since the performance diff is negligible,
-    
-    ifstream inputFile;                         // create input file stream for reading only
-    struct RowData RowArray[ARRAY_SIZE];   // array of structs to store each Row from CSV file and their respective data
-   
-
-    // open the input file to read
-    inputFile.open("sample-review/review-report.csv");
-    // read the file until we reach the end
-    int ColumnNumber = atoi(argv[1]);
-    
-    while(!inputFile.eof())
-    {
-        
-        string date = "";
-        string comment = "";
-        
-
-        getline(inputFile,date,',');
-        getline(inputFile,comment);
-        
- 
-        RowArray[0].date = date;
-        RowArray[0].comment = comment;
-        
-    if(argc==2)
-    {
-        PrintSpecificFunction(ColumnNumber,&RowArray[0]); 
-    }else
-    { 
-        cout << RowArray[0].comment<<" ";
-    }
-    }
-    
-}
-void PrintSpecificFunction(int ColumnNumber,RowData RowArray[])
-{
-    switch(ColumnNumber)
-        {
-            case 1:
-                    cout << RowArray[0].date<<" ";
-                    break;
-            case 2:
-                    cout<<RowArray[0].comment<<" ";
-                    break;
-            default:
-                    cout<<RowArray[0].date<<" ";
-                    cout<<RowArray[0].comment<<" ";
-                    break;
+    string line, word,temp; 
+  
+        while (!fin.eof()) 
+        { 
+            while(getline(fin,line,',')) 
+            { 
+                cout<<line<<" "; 
+            }
+      
         }
+}
+void IfArgumentsPassed(fstream& fin,char *argv[])
+{
+    string line; 
+    
+    int SelectedColumn = atoi(argv[1])-1;
+    
+    
+    while(getline(fin, line))
+    {
+        PrintSelectedColumn(line,SelectedColumn);
+    }
+}
+void PrintSelectedColumn(string line,int SelectedColumn)
+{
+    int CommaCount=0;
+    CommaCount=0;
+    int size;
+    size=line.size();
+
+    for(int i=0;i<size;i++)
+    {          
+        if(line[i]==',')
+        {
+            CommaCount++;
+            continue;
+        }
+        if(CommaCount==SelectedColumn)
+        cout<<line[i];
+        
+    }
+    cout<<endl;
 }
