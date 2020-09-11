@@ -67,7 +67,7 @@ void CommaCounter(string line,int SelectedColumn)
             CommaCount++;
             continue;
         }
-        PrintSelectedColumn(CommaCount,SelectedColumn,line,i);
+       // PrintSelectedColumn(CommaCount,SelectedColumn,line,i);
         
     }
    // cout<<" ";
@@ -75,7 +75,7 @@ void CommaCounter(string line,int SelectedColumn)
 void PrintSelectedColumn(int CommaCount,int SelectedColumn,string line,int i)
 {
     
-    if(CommaCount==SelectedColumn)
-       // cout<<line[i];
+   if(CommaCount==SelectedColumn)
+        cout<<line[i];
     
 }
