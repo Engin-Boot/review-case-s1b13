@@ -30,7 +30,7 @@ void printwordandwordcounts(map<std::string, int> M)
         fstream fout;
         fout.open("sample-review/WordCount.csv", ios::out | ios::app);
         for (auto& iterator : M) {
-            fout << iterator->second << "," << iterator->first << "\n";
+            fout << iterator.first << "," << iterator.second << "\n";
         }
     }
     else
