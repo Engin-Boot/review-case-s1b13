@@ -27,8 +27,11 @@ jobs:
       run: cppcheck --enable=all --error-exitcode=1 .
       
     - name: run
-      run: ./Sender 2 | ./Receive
-    
+      run: ./Sender 2 | ./Receiver
+      
+    - name: run
+      run: ./Receiver
+
     - name: coverage report Sender
       run: gcov -r sender/sender.cpp
       
