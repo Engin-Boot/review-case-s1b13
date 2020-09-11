@@ -11,7 +11,8 @@
 using namespace std;
 void IfNoArgumentsPassed(fstream&);
 void IfArgumentsPassed(fstream&  ,char**);
-void PrintSelectedColumn(string ,int);
+void CommaCounter(string ,int);
+void PrintSelectedColumn(int ,int ,string ,int);
 
 int main(int argc,char *argv[])
 {
@@ -29,7 +30,7 @@ int main(int argc,char *argv[])
 }
 void IfNoArgumentsPassed(fstream& fin)
 {
-    string line, word,temp; 
+    string line; 
   
         while (!fin.eof()) 
         { 
@@ -49,10 +50,10 @@ void IfArgumentsPassed(fstream& fin,char *argv[])
     
     while(getline(fin, line))
     {
-        PrintSelectedColumn(line,SelectedColumn);
+        CommaCounter(line,SelectedColumn);
     }
 }
-void PrintSelectedColumn(string line,int SelectedColumn)
+void CommaCounter(string line,int SelectedColumn)
 {
     int CommaCount=0;
     CommaCount=0;
@@ -66,9 +67,15 @@ void PrintSelectedColumn(string line,int SelectedColumn)
             CommaCount++;
             continue;
         }
-        if(CommaCount==SelectedColumn)
-        cout<<line[i];
+        PrintSelectedColumn(CommaCount,SelectedColumn,line,i);
         
     }
     cout<<endl;
+}
+void PrintSelectedColumn(int CommaCount,int SelectedColumn,string line,int i)
+{
+    
+    if(CommaCount==SelectedColumn)
+        cout<<line[i];
+    
 }
