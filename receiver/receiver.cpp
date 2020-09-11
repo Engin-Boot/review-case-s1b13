@@ -30,13 +30,18 @@ return 0;
 }
 void printwordandwordcounts(map<std::string,int> M)
 {
+ 
  if(M.size()>0)
  {
- for (auto& it : M) { 
-        cout << it.first << " - "
+  fstream fout;
+ fout.open("WordCount.csv", ios::out | ios::app);
+ for (auto& it : M)
+ { 
+        fout << it.first << " - "
              << it.second 
              << endl; 
-    } }
+    }
+ }
  else
   cout<<"Empty Input Received";
 }
