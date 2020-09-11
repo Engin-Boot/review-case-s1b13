@@ -30,11 +30,15 @@ return 0;
 }
 void printwordandwordcounts(map<std::string,int> M)
 {
+ if(M.size()>0)
+ {
  for (auto& it : M) { 
         cout << it.first << " - "
              << it.second 
              << endl; 
-    } 
+    } }
+ else
+  cout<<"Empty Input Received";
 }
 map<std::string,int> countWords(map<std::string,int> &M,string line)
 {
