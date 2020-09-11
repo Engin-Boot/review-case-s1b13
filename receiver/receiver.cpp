@@ -4,8 +4,7 @@
 #include<map>
 #include<vector>
 using namespace std;
-namespace receiver
-{
+
 map<std::string,int> countWords(map<std::string,int>&,string );
 void printwordandwordcounts(map<std::string,int>);
 map<string,int> InsertWords(map<string,int>,std::vector<string>);
@@ -84,7 +83,7 @@ map<string,int> InsertWords(map<string,int> M,std::vector<string> words)
   
     return M; 
 }
-}
+
 /*map<string, int> InsertlastWord(map<string, int> M,string word)
 {
  if (M.find(word) == M.end()) 
