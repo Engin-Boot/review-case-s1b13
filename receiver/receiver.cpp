@@ -30,6 +30,7 @@ void Receiver::printwordandwordcounts(map<std::string, int> M)
         fout.open("sample-review/WordCount.csv", ios::out | ios::app);
         for (auto& iterator : M) {
             fout << iterator.first << "," << iterator.second << "\n";
+            cout << iterator.first << "," << iterator.second << "\n";
         }
     }
     else
