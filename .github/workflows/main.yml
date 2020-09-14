@@ -27,7 +27,7 @@ jobs:
       run: ./Sender "sample-review/review-report.csv" 2 | ./Receive
       
     - name: run
-      run: ./Receive
+      run: ./receive-test.cpp
 
     - name: coverage report Sender
       run: gcov -r sender.cpp
