@@ -3,6 +3,7 @@
 #include <map>
 #include <vector>
 #include "catch.hpp"
+#include "receiver.h"
 using namespace std;
 TEST_CASE("printing the word and word count") {
  map<std::string, int> M;
@@ -13,6 +14,6 @@ TEST_CASE("printing the word and word count") {
   result.insert(make_pair("two", 1));
   
   
-    REQUIRE(InsertWords(M,words)==result);
+    REQUIRE(receiver::InsertWords(M,words)==result);
     
 }
