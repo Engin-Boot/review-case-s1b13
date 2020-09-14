@@ -8,7 +8,7 @@ void printwordandwordcounts(map<std::string, int>);
 map<string, int> InsertWords(map<string, int>, std::vector<string>);
 vector<string> checkforalphabets(string,vector<string>);*/
 
-int Receiver::main()
+int main()
 {
     map<string, int> M;
     string line = "";
