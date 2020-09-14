@@ -2,7 +2,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
-namespce receiver
+namespace receiver
 {
 map<std::string, int> countWords(map<std::string, int>&, string);
 void printwordandwordcounts(map<std::string, int>);
