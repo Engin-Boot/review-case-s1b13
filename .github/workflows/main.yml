@@ -26,6 +26,9 @@ jobs:
     - name: run
       run: ./Sender "sample-review/review-report.csv" 2 | ./Receive
       
+    - name: build ReceiverTest
+      run: g++ -Wall -Wextra -o Receive-test receiver/receiver-test.cpp
+ 
 
     - name: coverage report Sender
       run: gcov -r sender.cpp
