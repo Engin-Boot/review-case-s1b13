@@ -9,11 +9,13 @@ TEST_CASE("printing the word and word count") {
  map<std::string, int> M;
    M.insert(make_pair("one", 1));
   std::vector<string> words={"one","two"};
-  map<std::string, int> result;
+  map<std::string, int> result,res2;
    result.insert(make_pair("one", 2));
   result.insert(make_pair("two", 1));
+  res2=Receiver::InsertWords(M,words);
   
+    REQUIRE(res2==result);
   
-    REQUIRE(Receiver::InsertWords(M,words)==result);
+   
     
 }
