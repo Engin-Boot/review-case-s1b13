@@ -27,7 +27,7 @@ jobs:
       run: cppcheck --enable=all --error-exitcode=1 .
       
     - name: run
-      run: ./Sender 2 | ./Receive
+      run: ./Sender "sample-review/review-report.csv" 2 | ./Receive
       
     - name: run
       run: ./Receive
