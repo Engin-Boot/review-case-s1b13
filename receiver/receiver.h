@@ -2,10 +2,11 @@
 #include <iostream>
 #include <map>
 #include <vector>
+using namespace std;
 namespace receiver
 {
-map<std::string, int> countWords(map<std::string, int>&, string);
-void printwordandwordcounts(map<std::string, int>);
-map<string, int> InsertWords(map<string, int>, std::vector<string>);
+std::map<std::string, int> countWords(std::map<std::string, int>&, string);
+void printwordandwordcounts(std::map<std::string, int>);
+std::map<string, int> InsertWords(std::map<string, int>, std::vector<string>);
 vector<string> checkforalphabets(string,vector<string>);
 }
