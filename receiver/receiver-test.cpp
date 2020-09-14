@@ -14,6 +14,6 @@ TEST_CASE("printing the word and word count") {
   result.insert(make_pair("two", 1));
   
   
-    REQUIRE(receiver::InsertWords(M,words)==result);
+    REQUIRE(Receiver::InsertWords(M,words)==result);
     
 }
