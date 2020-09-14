@@ -24,13 +24,13 @@ jobs:
       run: g++ -Wall -Wextra -Werror --coverage -o Receive receiver/receiver.cpp
 
     - name: build ReceiverTest
-      run: g++ -Wall -Wextra -Werror --coverage -o receiver/receiver-test.cpp
+      run: g++ -Wall -Wextra -o testchecker *.cpp
 
     - name: run
       run: ./Sender "sample-review/review-report.csv" 2 | ./Receive
       
     - name: run
-      run: ./receiver/receiver-test.cpp
+      run: .testchecker
 
     - name: coverage report Sender
       run: gcov -r sender.cpp
