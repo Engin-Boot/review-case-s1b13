@@ -6,8 +6,8 @@
 #include<sys/stat.h>
 
 using namespace std;
-void IfNoArgumentsPassed(fstream&);
-void IfArgumentsPassed(fstream&  ,char**);
+void IfNoColumnFilterPassed(fstream&);
+void IfColumnFilterPassed(fstream&  ,char**);
 void CommaCounter(string ,int);
 void PrintSelectedColumn(int ,int ,string ,int);
 inline bool exists(const std::string& filename){
@@ -36,21 +36,21 @@ void isFileOpen(fstream& fin,string& fileName)
 int main(int argc,char *argv[])
 {
     fstream fin; 
-    string FileName = "sample-review/review-report.csv";
+    string FileName = argv[1];
     CheckIfTheFileExists(FileName);
     isFileOpen(fin,FileName);
     
-    if(argc==1)
+    if(argc==2)
     {
-        IfNoArgumentsPassed(fin);
+        IfNoColumnFilterPassed(fin);
     }
     else
     {
-       IfArgumentsPassed(fin,argv);
+       IfColumnFilterPassed(fin,argv);
     }    
     
 }
-void IfNoArgumentsPassed(fstream& fin)
+void IfNoColumnFilterPassed(fstream& fin)
 {
     string line; 
   
@@ -63,13 +63,12 @@ void IfNoArgumentsPassed(fstream& fin)
       
         }
 }
-void IfArgumentsPassed(fstream& fin,char *argv[])
+void IfColumnFilterPassed(fstream& fin,char *argv[])
 {
     string line; 
     
-    int SelectedColumn = atoi(argv[1])-1;
-    
-    
+    int SelectedColumn = atoi(argv[2])-1;
+ 
     while(getline(fin, line))
     {
         CommaCounter(line,SelectedColumn);
