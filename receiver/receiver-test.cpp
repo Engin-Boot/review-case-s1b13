@@ -3,7 +3,7 @@
 #include <map>
 #include <vector>
 #include "catch.hpp"
-
+#include "receive.h"
 using namespace std;
 TEST_CASE("printing the word and word count") {
  std::map<std::string, int> M;
