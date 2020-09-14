@@ -12,7 +12,7 @@ TEST_CASE("printing the word and word count") {
   map<std::string, int> result,res2;
    result.insert(make_pair("one", 2));
   result.insert(make_pair("two", 1));
-  res2=Receiver::InsertWords(M,words);
+  res2=InsertWords(M,words);
   
     REQUIRE(res2==result);
   
