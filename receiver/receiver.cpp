@@ -74,10 +74,10 @@ vector<string> checkforalphabets(string word,vector<string> words)
     int i=0;
 while(word[i])
 {
-    if (!isalpha(str[i]))
+    if (!isalpha(word[i]))
         return words;
-    else
-        words.push_back(word); 
+  
 }
+    words.push_back(words);
     return words;
 }
