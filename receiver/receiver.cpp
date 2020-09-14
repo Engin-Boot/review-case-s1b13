@@ -1,8 +1,6 @@
 
-#include <fstream>
-#include <iostream>
-#include <map>
-#include <vector>
+#include "receiver.h"
+
 using namespace std;
 
 map<std::string, int> countWords(map<std::string, int>&, string);
