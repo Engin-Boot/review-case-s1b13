@@ -2,7 +2,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
-#include "catch.hpp"
+#include "../catch.hpp"
 #include "receiver.h"
 using namespace std;
 TEST_CASE("printing the word and word count") {
