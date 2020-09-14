@@ -76,6 +76,7 @@ while(word[i])
 {
     if (!isalpha(word[i]))
         return words;
+    i++;
   
 }
     words.push_back(word);
