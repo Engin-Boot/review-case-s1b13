@@ -3,7 +3,7 @@
 #include <map>
 #include <vector>
 using namespace std;
-namespace receiver
+namespace Receiver
 {
 std::map<std::string, int> countWords(std::map<std::string, int>&, string);
 void printwordandwordcounts(std::map<std::string, int>);
