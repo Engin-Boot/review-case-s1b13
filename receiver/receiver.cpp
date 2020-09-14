@@ -78,6 +78,6 @@ while(word[i])
         return words;
   
 }
-    words.push_back(words);
+    words.push_back(word);
     return words;
 }
