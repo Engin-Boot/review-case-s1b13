@@ -16,10 +16,10 @@ int main()
         if (line == "") {
             break;
         }
-        map<string, int> tempMap = countWords(M, line);
+        map<string, int> tempMap = Receiver::countWords(M, line);
         M = tempMap;
     }
-    printwordandwordcounts(M);
+    Receiver::printwordandwordcounts(M);
     return 0;
 }
 void Receiver::printwordandwordcounts(map<std::string, int> M)
@@ -44,16 +44,16 @@ map<std::string, int> Receiver::countWords(map<std::string, int>& M, string line
     for (int i = 0; line[i] != '\0'; i++) {
 
         if (line[i] == ' ') {
-            tempwords=checkforalphabets(word,words);
+            tempwords=Receiver::checkforalphabets(word,words);
             words=tempwords;
             word = "";
         }
         else
             word += line[i];
     }
-    tempwords=checkforalphabets(word,words);
+    tempwords=Receiver::checkforalphabets(word,words);
      words=tempwords;
-    return InsertWords(M, words);
+    return Receiver::InsertWords(M, words);
 }
 
 map<string, int> Receiver::InsertWords(map<string, int> M, std::vector<string> words)
