@@ -1,5 +1,5 @@
 #define CATCH_CONFIG_MAIN  
-#include "catch.hpp"
+#include "../catch.hpp"
 #include "../sender/Sender.h"
 #include <fstream>
 #include <iostream>
