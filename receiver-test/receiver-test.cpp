@@ -40,3 +40,13 @@ TEST_CASE("disintergare the line and add each words to the map")
  result.insert(make_pair("required", 1));
  REQUIRE( Receiver::countWords(M,line)==result);
 }
+
+TEST_CASE("check for removal of stop words")
+{
+ map<std::string, int> M,result;
+  M.insert(make_pair("one", 11));
+  M.insert(make_pair("me", 32));
+  result.insert(make_pair("one", 11));
+ 
+ REQUIRE(Receiver::RemoveStopWords(M)==result);
+}
