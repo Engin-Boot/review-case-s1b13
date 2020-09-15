@@ -4,17 +4,14 @@
 #include <sstream>
 #include <algorithm> 
 #include<sys/stat.h>
-
+#include "Sender.h"
 using namespace std;
-void IfNoColumnFilterPassed(fstream&);
-void IfColumnFilterPassed(fstream&  ,char**);
-void CommaCounter(string ,int);
-void PrintSelectedColumn(int ,int ,string ,int);
-inline bool exists(const std::string& filename){
+
+inline bool Sender::exists(const std::string& filename){
   struct stat buffer;   
   return (stat (filename.c_str(), &buffer) == 0); 
 }
-void CheckIfTheFileExists(string& FileName)
+void Sender::CheckIfTheFileExists(string& FileName)
 {
     bool exist = exists(FileName);
     if(exist == false)
@@ -24,7 +21,7 @@ void CheckIfTheFileExists(string& FileName)
     }
     
 }
-void isFileOpen(fstream& fin,string& fileName)
+void Sender::isFileOpen(fstream& fin,string& fileName)
 {
     fin.open(fileName.c_str(),ios::in);
 	if(!fin.is_open())
@@ -35,22 +32,23 @@ void isFileOpen(fstream& fin,string& fileName)
 }
 int main(int argc,char *argv[])
 {
+    Sender s;
     fstream fin; 
     string FileName = argv[1];
-    CheckIfTheFileExists(FileName);
-    isFileOpen(fin,FileName);
+    s.CheckIfTheFileExists(FileName);
+    s.isFileOpen(fin,FileName);
     
     if(argc==2)
     {
-        IfNoColumnFilterPassed(fin);
+        s.IfNoColumnFilterPassed(fin);
     }
     else
     {
-       IfColumnFilterPassed(fin,argv);
+       s.IfColumnFilterPassed(fin,argv);
     }    
     
 }
-void IfNoColumnFilterPassed(fstream& fin)
+void Sender::IfNoColumnFilterPassed(fstream& fin)
 {
     string line; 
   
@@ -63,7 +61,7 @@ void IfNoColumnFilterPassed(fstream& fin)
       
         }
 }
-void IfColumnFilterPassed(fstream& fin,char *argv[])
+void Sender::IfColumnFilterPassed(fstream& fin,char *argv[])
 {
     string line; 
     
@@ -74,7 +72,7 @@ void IfColumnFilterPassed(fstream& fin,char *argv[])
         CommaCounter(line,SelectedColumn);
     }
 }
-void CommaCounter(string line,int SelectedColumn)
+void Sender::CommaCounter(string line,int SelectedColumn)
 {
     int CommaCount=0;
     CommaCount=0;
@@ -93,10 +91,10 @@ void CommaCounter(string line,int SelectedColumn)
     }
    cout<<" ";
 }
-void PrintSelectedColumn(int CommaCount,int SelectedColumn,string line,int i)
+char Sender::PrintSelectedColumn(int CommaCount,int SelectedColumn,string line,int i)
 {
     
    if(CommaCount==SelectedColumn)
         cout<<line[i];
-    
+    return line[i];
 }
