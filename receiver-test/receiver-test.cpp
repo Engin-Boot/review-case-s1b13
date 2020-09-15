@@ -38,5 +38,5 @@ TEST_CASE("disintergare the line and add each words to the map")
  result.insert(make_pair("is", 1));
  result.insert(make_pair("not", 1));
  result.insert(make_pair("required", 1));
- REQUIRE( Receiver::countWords(M,line)=result);
+ REQUIRE( Receiver::countWords(M,line)==result);
 }
