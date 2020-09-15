@@ -16,6 +16,7 @@ jobs:
     
     - name: install cppcheck static analysis
       run: sudo apt-get update && sudo apt-get install -y cppcheck
+    
       
     - name: build Sender
       run: g++ -Wall -Wextra -Werror --coverage -o Sender sender/sender.cpp
@@ -25,6 +26,9 @@ jobs:
 
     - name: run
       run: ./Sender "sample-review/review-report.csv" 2 | ./Receive
+      
+    - name: static analysis
+      run: cppcheck --enable=all--error-exitcode=1 . 
       
     - name: build SenderTest
       run: g++ -Wall -Wextra -o Sender-test Sender-Test/*.cpp
