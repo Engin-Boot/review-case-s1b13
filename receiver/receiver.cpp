@@ -76,8 +76,8 @@ vector<string> Receiver::pushbackword(string word,vector<string> words)
 {
     if(word=="")
      return words;
-    else
-        return  words.push_back(word);
+    words.push_back(word);
+        return  words;
 }
 map<string, int> Receiver::RemoveStopWords(map<string, int> Mapofwordandwordcount)
 {
