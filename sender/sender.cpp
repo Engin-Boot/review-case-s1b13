@@ -6,7 +6,6 @@
 #include<sys/stat.h>
 #include "Sender.h"
 using namespace std;
-
 inline bool Sender::exists(const std::string& filename){
   struct stat buffer;   
   return (stat (filename.c_str(), &buffer) == 0); 
@@ -19,7 +18,7 @@ void Sender::CheckIfTheFileExists(string& FileName)
         cout<<"File does not exists"<<endl;
         exit(0);
     }
-    
+     
 }
 void Sender::isFileOpen(fstream& fin,string& fileName)
 {
@@ -29,6 +28,7 @@ void Sender::isFileOpen(fstream& fin,string& fileName)
         cout << "File cannot be opened" << endl;
 		exit(0);
     }
+   
 }
 int main(int argc,char *argv[])
 {
@@ -37,7 +37,6 @@ int main(int argc,char *argv[])
     string FileName = argv[1];
     s.CheckIfTheFileExists(FileName);
     s.isFileOpen(fin,FileName);
-    
     if(argc==2)
     {
         s.IfNoColumnFilterPassed(fin);
@@ -46,39 +45,35 @@ int main(int argc,char *argv[])
     {
        s.IfColumnFilterPassed(fin,argv);
     }    
-    
 }
 void Sender::IfNoColumnFilterPassed(fstream& fin)
 {
     string line; 
-  
-        while (!fin.eof()) 
+       while (!fin.eof()) 
         { 
             while(getline(fin,line,',')) 
             { 
                 cout<<line<<" "; 
             }
-      
         }
 }
 void Sender::IfColumnFilterPassed(fstream& fin,char *argv[])
 {
     string line; 
-    
     int SelectedColumn = atoi(argv[2])-1;
- 
     while(getline(fin, line))
     {
         CommaCounter(line,SelectedColumn);
     }
 }
-void Sender::CommaCounter(string line,int SelectedColumn)
+string Sender::CommaCounter(string line,int SelectedColumn)
 {
     int CommaCount=0;
     CommaCount=0;
     int size;
     size=line.size();
-
+    string MyString;
+    string TempMyString;
     for(int i=0;i<size;i++)
     {          
         if(line[i]==',')
@@ -86,15 +81,17 @@ void Sender::CommaCounter(string line,int SelectedColumn)
             CommaCount++;
             continue;
         }
-        PrintSelectedColumn(CommaCount,SelectedColumn,line,i);
-        
+        TempMyString =  PrintSelectedColumn(CommaCount,SelectedColumn,line,i,MyString);
+        MyString = TempMyString;
     }
-   cout<<" ";
+   cout<<MyString<<" ";
+   return MyString;
 }
-char Sender::PrintSelectedColumn(int CommaCount,int SelectedColumn,string line,int i)
+string Sender::PrintSelectedColumn(int CommaCount,int SelectedColumn,string line,int i,string MyString)
 {
-    
    if(CommaCount==SelectedColumn)
-        cout<<line[i];
-    return line[i];
+   {
+        MyString.push_back(line[i]);
+    }
+    return MyString;
 }
