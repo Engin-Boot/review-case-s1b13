@@ -28,7 +28,7 @@ jobs:
       run: ./Sender "sample-review/review-report.csv" 2 | ./Receive
       
     - name: static analysis
-      run: cppcheck --enable=all --error-exitcode=1 . 
+      run: cppcheck --enable=all--error-exitcode=1 -ireceiver-test/receiver-test.cpp -iSender-Test/SenderTest.cpp .
       
     - name: build SenderTest
       run: g++ -Wall -Wextra -o Sender-test Sender-Test/*.cpp
