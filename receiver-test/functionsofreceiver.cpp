@@ -47,16 +47,22 @@ map<string, int> Receiver::InsertWords(map<string, int> M, std::vector<string> w
 }
 vector<string> Receiver::checkforalphabets(string word,vector<string> words)
 {
-    int i=0;
-while(word[i])
+    int iterator=0;
+while(word[iterator])
 {
-    if (!isalpha(word[i]))
+    if (!isalpha(word[iterator]))
         return words;
-    i++;
-  
+    iterator++;  
 }
+   
+    return Receiver::pushbackword(word,words);
+}
+vector<string> Receiver::pushbackword(string word,vector<string> words)
+{
+    if(word=="")
+     return words;
     words.push_back(word);
-    return words;
+        return  words;
 }
 map<string, int> Receiver::RemoveStopWords(map<string, int> M)
 {
