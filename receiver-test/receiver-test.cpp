@@ -46,7 +46,7 @@ TEST_CASE("check for removal of stop words")
  map<std::string, int> M,result;
   M.insert(make_pair("one", 11));
   M.insert(make_pair("me", 32));
-  result.insert(make_pair("two", 11));
+  result.insert(make_pair("one", 11));
  
  REQUIRE(Receiver::RemoveStopWords(M)==result);
 }
