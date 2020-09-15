@@ -70,9 +70,9 @@ while(word[iterator])
     iterator++;  
 }
    
-    return pushbackword(word,words);
+    return Receiver::pushbackword(word,words);
 }
-vector<string> pushbackword(string word,vector<string> words)
+vector<string> Receiver::pushbackword(string word,vector<string> words)
 {
     if(word=="")
      return words;
