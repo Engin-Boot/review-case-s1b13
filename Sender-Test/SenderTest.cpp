@@ -16,21 +16,11 @@ inline bool exists(const std::string& filename){
 bool CheckIfTheFileExists(string& FileName)
 {
     bool exist = exists(FileName);
-    if(exist == false)
-    {
-        cout<<"File does not exists"<<endl;
-        
-    }
     return exist;
 }
 bool isFileOpen(fstream& fin,string& fileName)
 {
     fin.open(fileName.c_str(),ios::in);
-	if(!fin.is_open())
-    {
-        cout << "File cannot be opened" << endl;
-		
-    }
     return !fin.is_open();
 }
 
