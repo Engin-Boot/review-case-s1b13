@@ -75,6 +75,13 @@ TEST_CASE("disintergrate the line and add each words to the map")
  result.insert(make_pair("required", 1));
  REQUIRE( Receiver::countWords(M,line)==result);
 }
+TEST_CASE("when sending empty line the map should not be updated")
+{
+  map<std::string, int> M;
+  M.insert(make_pair("one", 1));
+ M.insert(make_pair("two", 2));
+ REQUIRE( Receiver::countWords(M,"")==M);
+}
 
 TEST_CASE("check for removal of stop words")
 {
@@ -82,6 +89,19 @@ TEST_CASE("check for removal of stop words")
   M.insert(make_pair("one", 11));
   M.insert(make_pair("me", 32));
   result.insert(make_pair("one", 11));
- 
  REQUIRE(Receiver::RemoveStopWords(M)==result);
 }
+
+TEST_CASE("no stop words in the map then same map should be returned")
+{
+ map<std::string, int> M;
+  M.insert(make_pair("one", 11));
+  M.insert(make_pair("two", 32));
+ REQUIRE(Receiver::RemoveStopWords(M)==M);
+}
+TEST_CASE("when empty map is passed as argument then empty map should be ")
+{
+ map<std::string, int> M;
+ REQUIRE(Receiver::RemoveStopWords(M)==M);
+}
+
