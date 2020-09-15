@@ -49,9 +49,10 @@ map<std::string, int> Receiver::countWords(map<std::string, int>& Mapofwordandwo
 map<string, int> Receiver::InsertWords(map<string, int> Mapofwordandwordcount, std::vector<string> words)
 {
     for (auto& word : words) {
+        transform(word.begin(), word.end(), word.begin(), ::tolower);
         if (Mapofwordandwordcount.find(word) == Mapofwordandwordcount.end())
         {
-             transform(word.begin(), word.end(), word.begin(), ::tolower);
+             
             Mapofwordandwordcount.insert(make_pair(word, 1));
         }
         else
