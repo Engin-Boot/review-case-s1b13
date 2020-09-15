@@ -69,8 +69,15 @@ while(word[iterator])
         return words;
     iterator++;  
 }
-    words.push_back(word);
-    return words;
+   
+    return pushbackword(word,words);
+}
+vector<string> pushbackword(string word,vector<string> words)
+{
+    if(word=="")
+     return words;
+    else
+        return  words.push_back(word);
 }
 map<string, int> Receiver::RemoveStopWords(map<string, int> Mapofwordandwordcount)
 {
