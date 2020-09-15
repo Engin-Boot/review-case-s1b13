@@ -6,24 +6,59 @@
 #include "../catch.hpp"
 
 using namespace std;
-TEST_CASE("printing the word and word count") {
+TEST_CASE("inserting the word and word count when the word is not present in the map ") {
  map<std::string, int> M;
-   M.insert(make_pair("one", 1));
   std::vector<string> words={"one","two"};
   std::map<std::string, int> result;
-  result.insert(make_pair("one", 2));
+  result.insert(make_pair("one", 1));
   result.insert(make_pair("two", 1));
  
     REQUIRE(Receiver::InsertWords(M,words)==result);
     
 }
-TEST_CASE("checking if word contains alphabets or not")
+TEST_CASE("inserting the word and word count when the word is already present in the map") {
+ map<std::string, int> M;
+   M.insert(make_pair("one", 1));
+  std::vector<string> words={"one","one"};
+  std::map<std::string, int> result;
+  result.insert(make_pair("one", 3));
+ 
+    REQUIRE(Receiver::InsertWords(M,words)==result);
+    
+}
+TEST_CASE("passing empty string vector for insertion to map") {
+ map<std::string, int> M;
+   M.insert(make_pair("one", 1));
+  std::vector<string> words={};
+  std::map<std::string, int> result;
+  result.insert(make_pair("one", 1));
+ 
+    REQUIRE(Receiver::InsertWords(M,words)==result);
+    
+}
+
+
+TEST_CASE("sending a string that contains letters other than alphabets then it should not be added to the vector of words")
 {
  vector<string> words={"one","comment"};
 
 REQUIRE(Receiver::checkforalphabets("79NOSL",words)==words);
 }
-TEST_CASE("disintergare the line and add each words to the map")
+TEST_CASE("sending a string that contains only alphabets then it should be added to the vector of words")
+{
+ vector<string> words={"one","comment"};
+ vector<string> result={"one","comment","two"};
+
+REQUIRE(Receiver::checkforalphabets("two",words)==result);
+}
+TEST_CASE("sending an empty string then it should return same vector of words")
+{
+ vector<string> words={"one","comment"};
+
+REQUIRE(Receiver::checkforalphabets("",words)==words);
+}
+
+TEST_CASE("disintergrate the line and add each words to the map")
 {
  
   map<std::string, int> M;
