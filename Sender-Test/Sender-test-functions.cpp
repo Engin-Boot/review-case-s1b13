@@ -29,6 +29,7 @@ void Sender::isFileOpen(fstream& fin,string& fileName)
         cout << "File cannot be opened" << endl;
 		exit(0);
     }
+    
 }
 void Sender::IfNoColumnFilterPassed(fstream& fin)
 {
@@ -54,13 +55,14 @@ void Sender::IfColumnFilterPassed(fstream& fin,char *argv[])
         CommaCounter(line,SelectedColumn);
     }
 }
-void Sender::CommaCounter(string line,int SelectedColumn)
+string Sender::CommaCounter(string line,int SelectedColumn)
 {
     int CommaCount=0;
     CommaCount=0;
     int size;
     size=line.size();
-
+    string MyString = "";
+    string TempMyString = "";
     for(int i=0;i<size;i++)
     {          
         if(line[i]==',')
@@ -68,15 +70,19 @@ void Sender::CommaCounter(string line,int SelectedColumn)
             CommaCount++;
             continue;
         }
-        PrintSelectedColumn(CommaCount,SelectedColumn,line,i);
+        TempMyString =  PrintSelectedColumn(CommaCount,SelectedColumn,line,i,MyString);
+        MyString = TempMyString;
         
     }
-   cout<<" ";
+   
+   //cout<<MyString<<" ";
+   return MyString;
 }
-char Sender::PrintSelectedColumn(int CommaCount,int SelectedColumn,string line,int i)
+string Sender::PrintSelectedColumn(int CommaCount,int SelectedColumn,string line,int i,string MyString)
 {
-    
    if(CommaCount==SelectedColumn)
-        cout<<line[i];
-    return line[i];
+   {
+        MyString.push_back(line[i]);
+    }
+    return MyString;
 }
