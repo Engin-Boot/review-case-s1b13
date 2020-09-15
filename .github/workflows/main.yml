@@ -29,6 +29,9 @@ jobs:
     - name: build SenderTest
       run: g++ -Wall -Wextra -o Sender-test Sender-Test/*.cpp
       
+    - name: run SenderTest
+      run: ./Sender-test  
+      
     - name: build ReceiverTest
       run: g++ -Wall -Wextra -o Receive-test receiver-test/*.cpp
       
