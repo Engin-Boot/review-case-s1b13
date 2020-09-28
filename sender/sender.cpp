@@ -6,6 +6,17 @@
 #include<sys/stat.h>
 #include "Sender.h"
 using namespace std;
+
+void Sender::isFileNamePassed(string& SecondArgument)
+{
+    string s2 = ".csv";
+    if (!(SecondArgument.find(s2) != string::npos)) 
+    {
+        cout << "File Name Not passed" << '\n';
+        exit(0);
+    }
+}
+
 inline bool Sender::exists(const std::string& filename){
   struct stat buffer;   
   return (stat (filename.c_str(), &buffer) == 0); 
@@ -30,14 +41,16 @@ void Sender::isFileOpen(fstream& fin,string& fileName)
     }
    
 }
+
 int main(int argc,char *argv[])
 {
     Sender s;
     fstream fin; 
     string FileName = argv[1];
+    s.isFileNamePassed(FileName);
     s.CheckIfTheFileExists(FileName);
     s.isFileOpen(fin,FileName);
-    if(argc==2)
+    if(argc==2 && (FileName.find(".csv") != string::npos))
     {
         s.IfNoColumnFilterPassed(fin);
     }
@@ -63,10 +76,10 @@ void Sender::IfColumnFilterPassed(fstream& fin,char *argv[])
     int SelectedColumn = atoi(argv[2])-1;
     while(getline(fin, line))
     {
-        CommaCounter(line,SelectedColumn);
+        PrintSelectedColumn(line,SelectedColumn);
     }
 }
-string Sender::CommaCounter(string line,int SelectedColumn)
+string Sender::PrintSelectedColumn(string line,int SelectedColumn)
 {
     int CommaCount=0;
     CommaCount=0;
@@ -81,13 +94,13 @@ string Sender::CommaCounter(string line,int SelectedColumn)
             CommaCount++;
             continue;
         }
-        TempMyString =  PrintSelectedColumn(CommaCount,SelectedColumn,line,i,MyString);
+        TempMyString =  ReturnSelectedColumnData(CommaCount,SelectedColumn,line,i,MyString);
         MyString = TempMyString;
     }
    cout<<MyString<<" ";
    return MyString;
 }
-string Sender::PrintSelectedColumn(int CommaCount,int SelectedColumn,string line,int i,string MyString)
+string Sender::ReturnSelectedColumnData(int CommaCount,int SelectedColumn,string line,int i,string MyString)
 {
    if(CommaCount==SelectedColumn)
    {
