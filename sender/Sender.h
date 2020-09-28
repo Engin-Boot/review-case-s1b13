@@ -11,8 +11,8 @@ class Sender
     public:
         void IfNoColumnFilterPassed(fstream& );
         void IfColumnFilterPassed(fstream& ,char** );
-        string CommaCounter(string ,int );
-        string PrintSelectedColumn(int ,int ,string ,int ,string );
+        string PrintSelectedColumn(string ,int );
+        string ReturnSelectedColumnData(int ,int ,string ,int ,string );
         inline bool exists(const std::string& );
         void CheckIfTheFileExists(string& );
         void isFileOpen(fstream& ,string& );
