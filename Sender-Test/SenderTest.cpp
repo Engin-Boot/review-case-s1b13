@@ -27,19 +27,19 @@ bool isFileOpen(fstream& fin,string& fileName)
 TEST_CASE("WHEN we pass to function a CSV line containing date & comment and if we need comment part THEN it returns Comment part")
 {    
     string ExampleCSVString = "10/23/45 23:45,No additional comments";    
-    string return_string = s.CommaCounter(ExampleCSVString,1);    
+    string return_string = s.PrintSelectedColumn(ExampleCSVString,1);    
     REQUIRE(return_string == "No additional comments");
 }
 TEST_CASE("WHEN we pass to function a CSV line containing date & comment and if we need date part THEN it returns date part")
 {    
     string ExampleCSVString = "10/23/45 23:45,No additional comments";    
-    string return_string = s.CommaCounter(ExampleCSVString,0);    
+    string return_string = s.PrintSelectedColumn(ExampleCSVString,0);    
     REQUIRE(return_string == "10/23/45 23:45");
 }
 TEST_CASE("WHEN the given sentence does not contain a COMMA then it returns the whole string")
 {
     string ExampleCSVString = "10/23/45 23:45No additional comments";    
-    string return_string = s.CommaCounter(ExampleCSVString,0);    
+    string return_string = s.PrintSelectedColumn(ExampleCSVString,0);    
     REQUIRE(return_string == "10/23/45 23:45No additional comments");
 }
 TEST_CASE("WHEN we pass the filename to the function THEN it returns TRUE")
