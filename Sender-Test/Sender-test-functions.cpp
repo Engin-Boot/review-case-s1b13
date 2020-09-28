@@ -52,10 +52,10 @@ void Sender::IfColumnFilterPassed(fstream& fin,char *argv[])
  
     while(getline(fin, line))
     {
-        CommaCounter(line,SelectedColumn);
+        PrintSelectedColumn(line,SelectedColumn);
     }
 }
-string Sender::CommaCounter(string line,int SelectedColumn)
+string Sender::PrintSelectedColumn(string line,int SelectedColumn)
 {
     int CommaCount=0;
     CommaCount=0;
@@ -70,7 +70,7 @@ string Sender::CommaCounter(string line,int SelectedColumn)
             CommaCount++;
             continue;
         }
-        TempMyString =  PrintSelectedColumn(CommaCount,SelectedColumn,line,i,MyString);
+        TempMyString =  ReturnSelectedColumnData(CommaCount,SelectedColumn,line,i,MyString);
         MyString = TempMyString;
         
     }
@@ -78,7 +78,7 @@ string Sender::CommaCounter(string line,int SelectedColumn)
    //cout<<MyString<<" ";
    return MyString;
 }
-string Sender::PrintSelectedColumn(int CommaCount,int SelectedColumn,string line,int i,string MyString)
+string Sender::ReturnSelectedColumnData(int CommaCount,int SelectedColumn,string line,int i,string MyString)
 {
    if(CommaCount==SelectedColumn)
    {
