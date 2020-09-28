@@ -16,4 +16,5 @@ class Sender
         inline bool exists(const std::string& );
         void CheckIfTheFileExists(string& );
         void isFileOpen(fstream& ,string& );
+        void isFileNamePassed(string& ); 
 };
