@@ -30,8 +30,7 @@ jobs:
     - name: static analysis
       run: cppcheck --enable=all --error-exitcode=1 -ireceiver-test/receiver-test.cpp -iSender-Test/SenderTest.cpp .
       
-    - name: coverage report Sender
-      run: gcov -r sender.cpp
+    
       
     - name: build SenderTest
       run: g++ -Wall -Wextra -o Sender-test Sender-Test/*.cpp
@@ -44,8 +43,9 @@ jobs:
       
     - name: run
       run: ./Receive-test
-
-    
       
+    - name: coverage report Sender
+      run: gcov -r sender.cpp
+    
     - name: coverage report Receiver
       run: gcov -r receiver.cpp
