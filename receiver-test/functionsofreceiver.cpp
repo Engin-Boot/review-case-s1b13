@@ -69,8 +69,8 @@ int main(int argc, char** argv)
 	SAMP_BOOLEAN            sampBool;
 	STORAGE_OPTIONS         options;
 	MC_STATUS               mcStatus;
-	int                     applicationID = -1, associationID = -1, imageCurrent = 0;
-	int                     imagesSent = 0L, totalImages = 0L, fstatus = 0;
+	int                     applicationID = -1, associationID = -1;
+	int                     totalImages = 0L;
 	double                  seconds = 0.0;
 	void* startTime = NULL, * imageStartTime = NULL;
 	char                    fname[512] = { 0 };  /* Extra long, just in case */
@@ -274,7 +274,7 @@ void traverseListandsend(STORAGE_OPTIONS* options, InstanceNode** node, char* fn
 {
 	void *imageStartTime = NULL;
 	int imagesSent=0;
-	double seconds = 0.0;
+	
 	SAMP_BOOLEAN sampBool;
 	MC_STATUS        mcStatus;
 	while (*node)
@@ -331,7 +331,7 @@ void checkReadImage(SAMP_BOOLEAN sampBool, InstanceNode* node) {
 			{
 				(node)->imageSent = SAMP_FALSE;
 				printf("Can not open image file [%s]\n", (node)->fname);
-				node = (node)->Next;
+				
 			}
 		}
 
@@ -367,7 +367,7 @@ void traverseimages(STORAGE_OPTIONS* A_options, InstanceNode** instanceList, cha
 	for (imageCurrent = A_options->StartImage; imageCurrent <= A_options->StopImage; imageCurrent++)
 	{
 		sprintf(fname, "%d.img", imageCurrent);
-		sampBool = AddFileToList(&(*instanceList), fname);
+		sampBool = AddFileToList((instanceList), fname);
 		if (!sampBool)
 		{
 			printf("Warning, cannot add SOP instance to File List, image will not be sent [%s]\n", fname);
@@ -500,7 +500,7 @@ static void CopyCmdArguments(int A_argc, char* A_argv[], STORAGE_OPTIONS* A_opti
 	int       i = 0, argCount = 0;
 	for (i = 1; i < A_argc; i++)
 	{
-		char c = (A_argv[i][0]);
+		
 		CopyHostName(&i, A_argv, A_options);
 		CopyPortName(&i, A_argv, A_options);
 		CopyPatientFirstName(&i, A_argv);
@@ -1116,7 +1116,7 @@ static SAMP_BOOLEAN ReadMessageFromFile(STORAGE_OPTIONS* A_options,
 	MC_STATUS mcStatus;
 	unsigned long errorTag = 0;
 	CBinfo callbackInfo = { 0 };
-	int retStatus = 0;
+	
 	SAMP_BOOLEAN sampBool;
 
 
@@ -1447,52 +1447,6 @@ static MC_STATUS NOEXP_FUNC StreamToMsgObj(int        A_msgID,
 } /* StreamToMsgObj() */
 
 
-/****************************************************************************
- *
- *  Function    :   Create_Inst_UID
- *
- *  Parameters  :   none
- *
- *  Returns     :   A pointer to a new UID
- *
- *  Description :   This function creates a new UID for use within this
- *                  application.  Note that this is not a valid method
- *                  for creating UIDs within DICOM because the "base UID"
- *                  is not valid.
- *                  UID Format:
- *                  <baseuid>.<deviceidentifier>.<serial number>.<process id>
- *                       .<current date>.<current time>.<counter>
- *
- ****************************************************************************/
-static char * Create_Inst_UID()
-{
-	static short UID_CNTR = 0;
-	static char  deviceType[] = "1";
-	static char  serial[] = "1";
-	static char  Sprnt_uid[68];
-	char         creationDate[68];
-	char         creationTime[68];
-	time_t       timeReturn;
-	struct tm*   timePtr;
-#ifdef UNIX
-	unsigned long pid = getpid();
-#endif
-
-
-	timeReturn = time(NULL);
-	timePtr = localtime(&timeReturn);
-
-	sprintf(creationDate, "%d%d%d", (timePtr->tm_year + 1900), (timePtr->tm_mon + 1), timePtr->tm_mday);
-	sprintf(creationTime, "%d%d%d", timePtr->tm_hour, timePtr->tm_min, timePtr->tm_sec);
-
-#ifdef UNIX
-	sprintf(Sprnt_uid, "2.16.840.1.999999.%s.%s.%d.%s.%s.%d", deviceType, serial, pid, creationDate, creationTime, UID_CNTR++);
-#else
-	sprintf(Sprnt_uid, "2.16.840.1.999999.%s.%s.%s.%s.%d", deviceType, serial, creationDate, creationTime, UID_CNTR++);
-#endif
-
-	return(Sprnt_uid);
-}
 
 
 /****************************************************************************
